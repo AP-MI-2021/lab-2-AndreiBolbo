@@ -27,13 +27,61 @@ def get_goldbach(n):
         p1=i
         p2=n-i
         if is_prime(p1) & is_prime(p2):
-            return p1,p2
-    return 0,0
+            return p1, p2
+    return 0, 0
+def test_goldbach():
+    assert get_goldbach(4) != 0, 0
+    assert get_goldbach(12) != 0, 0
+    assert get_goldbach(10) != 0, 0
+    assert get_goldbach(8) != 0, 0
+    assert get_goldbach(6) != 0, 0
+def get_newton_sqrt(n,steps):
+    '''
+    Determina radicalul folosind algoritmul lui Newton cu un anumit numar de pasi
+    acesta pleaca de la functia f(x)=x^2-a cu f'(x)=2x
+    urmand sa folosim formula x1=x0-f(x0)/f'(x0)
+    unde  se specifica ca x0=2 initial.
+    input:
+    -n ,steps:int
+    output:
+    -x1:float
+
+    '''
+    i = 1
+    x0 = 2
+    while i <= steps:
+        x1 = x0-(pow(x0, 2)-n)/(2*x0)
+        x0 = x1
+        i+=1
+    return x1
+
+def test_get_newton_sqrt():
+    assert get_newton_sqrt(16, 2) == 4.1
+    assert get_newton_sqrt(18, 2) == 4.386363636363637
+    assert get_newton_sqrt(36, 1) == 10.0
+    assert get_newton_sqrt(49, 2) == 8.474056603773585
+
 def main():
-    nr=int(input('Pentru a avea solutie 100% dati un numar par >=4 . Dati un numar: '))
-    g,d=get_goldbach(nr)
-    if g==0 & d==0:
-        print(f'Nu exista perechile p1,p2 prime pentru care {nr}=p1+p2')
-    else:
-        print(g,d)
+    while True:
+        print('1. Pentru a determina numerele prime p1,p2 pentru care n=p1+p2(conjectura lui Goldbach)')
+        print('2. Calculul radicalului cu metoda lui Newton')
+        print('x. Pentru a iesi din program')
+        optiune = (input('Alegeti optiunea dorita :'))
+        if optiune == '1':
+            nr = int(input('Pentru a avea solutie 100% dati un numar par >=4 . Dati un numar: '))
+            g, d = get_goldbach(nr)
+            if g == 0 & d == 0:
+                print(f'Nu exista perechile p1,p2 prime pentru care {nr}=p1+p2')
+            else:
+                print(f'{nr}={g}+{d}')
+        elif optiune=='2':
+            nr1=int(input('Dati un numar: '))
+            steps=int(input('Dati numarul de pasi: '))
+            print(get_newton_sqrt(nr1, steps))
+        elif optiune == 'x':
+            break
+        else:
+            print('Optiune incorecta! ')
+test_get_newton_sqrt()
+test_goldbach()
 main()
