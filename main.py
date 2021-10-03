@@ -32,7 +32,7 @@ def get_goldbach(n):
 def main():
     nr=int(input('Pentru a avea solutie 100% dati un numar par >=4 . Dati un numar: '))
     g,d=get_goldbach(nr)
-    if g==0 &d==0:
+    if g==0 & d==0:
         print(f'Nu exista perechile p1,p2 prime pentru care {nr}=p1+p2')
     else:
         print(g,d)
