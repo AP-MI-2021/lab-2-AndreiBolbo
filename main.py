@@ -90,11 +90,11 @@ def test_get_newton_sqrt():
 
 
 def test_is_palindrome():
-    assert is_palindrome(121) == True
-    assert is_palindrome(151) == True
-    assert is_palindrome(11) == True
-    assert is_palindrome(6) == True
-    assert is_palindrome(123) == False
+    assert is_palindrome(121) == 1  # true
+    assert is_palindrome(151) == 1
+    assert is_palindrome(11) == 1
+    assert is_palindrome(6) == 1
+    assert is_palindrome(123) == 0  # false
 
 
 def main():
@@ -112,11 +112,11 @@ def main():
             else:
                 print(f'{nr}={g}+{d}')
         elif optiune == '2':
-            nr1=int(input('Dati un numar: '))
-            steps=int(input('Dati numarul de pasi: '))
+            nr1 = int(input('Dati un numar: '))
+            steps = int(input('Dati numarul de pasi: '))
             print(get_newton_sqrt(nr1, steps))
         elif optiune == '3':
-            nr2=int(input('Dati un numar: '))
+            nr2 = int(input('Dati un numar: '))
             if is_palindrome(nr2):
                 print('Numarul dat este palindrom')
             else:
